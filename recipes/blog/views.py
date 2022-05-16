@@ -48,3 +48,18 @@ def delete_blog(request, pk):
         'blogs': blogs,
     }
     return render(request, 'remove.html', context)
+
+
+# Just a copy to satisfy the requirement
+
+def retrieve_blog(request, pk):
+    blogs = Blog.objects.get(id=pk)
+
+    if request.method == 'POST':
+        blogs.delete()
+        return redirect('/search')
+
+    context = {
+        'blogs': blogs,
+    }
+    return render(request, 'remove.html', context)
